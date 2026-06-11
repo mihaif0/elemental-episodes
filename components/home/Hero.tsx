@@ -42,13 +42,13 @@ export function Hero() {
           animate="show"
           className="grid items-center gap-10 py-16 md:grid-cols-2 md:py-24"
         >
-          <div className="order-2 md:order-1">
+          <div className="order-1 md:order-1">
             <motion.p variants={item} className="eyebrow">
               Elemental Episodes — Supreme Basics
             </motion.p>
             <motion.h1
               variants={item}
-              className="mt-6 font-display text-6xl font-medium leading-[0.95] tracking-tight text-metal md:text-8xl"
+              className="mt-6 font-display text-5xl font-medium leading-[0.95] tracking-tight text-metal sm:text-6xl md:text-8xl"
             >
               Esența
               <br />
@@ -78,12 +78,12 @@ export function Hero() {
             </motion.p>
           </div>
 
-          <motion.div variants={item} className="order-1 md:order-2">
+          <motion.div variants={item} className="order-2 md:order-2">
             <motion.div
               initial={{ clipPath: "inset(0 0 100% 0)" }}
               animate={{ clipPath: "inset(0 0 0% 0)" }}
               transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
-              className="relative aspect-[4/5] w-full overflow-hidden border border-line"
+              className="relative mx-auto aspect-[4/5] w-2/3 overflow-hidden border border-line sm:w-1/2 md:w-full"
             >
               <Image
                 src="/lookbook/navy-pedestal.webp"
