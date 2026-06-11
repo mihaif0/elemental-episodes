@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Elemental Episodes — design system (dark / silver-platinum)        */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Ink scale — near-black backgrounds */
+  --color-ink: #0b0b0d;
+  --color-ink-2: #121216;
+  --color-ink-3: #18181d;
+  --color-ink-4: #1f1f26;
+  --color-line: #2a2a32;
+  --color-line-soft: #ffffff14;
+
+  /* Silver / platinum accents + text */
+  --color-platinum: #eef0f4;
+  --color-silver: #c9cdd6;
+  --color-fog: #aeb2bd;
+  --color-steel: #82868f;
+  --color-ash: #5b5e66;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Motion */
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-silver);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-silver);
+    color: var(--color-ink);
+  }
+  /* Subtle metallic page wash */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 70% at 50% -10%, #1a1b22 0%, transparent 55%),
+      radial-gradient(80% 50% at 100% 0%, #15161c 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Eyebrow / kicker label */
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--color-steel);
+  }
+
+  /* Brushed-metal text for headlines */
+  .text-metal {
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d6d9e0 38%,
+      #9a9ea8 72%,
+      #cdd0d8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hairline divider with a silver glow in the middle */
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-line),
+      var(--color-fog),
+      var(--color-line),
+      transparent
+    );
+    opacity: 0.6;
+  }
+
+  /* Frosted card surface */
+  .surface {
+    background: linear-gradient(180deg, #16161b 0%, #101015 100%);
+    border: 1px solid var(--color-line);
+  }
+
+  /* Editorial display face (fashion Didone) */
+  .font-display {
+    font-family: var(--font-display), "Times New Roman", Georgia, serif;
+  }
+
+  /* Seamless infinite marquee */
+  .marquee {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.75rem;
+    width: max-content;
+    white-space: nowrap;
+    animation: marquee 34s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Long-form text (legal, FAQ, content pages) */
+  .prose-ee {
+    color: var(--color-fog);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .prose-ee h2 {
+    color: var(--color-platinum);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-ee h3 {
+    color: var(--color-platinum);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-ee p {
+    margin-bottom: 1rem;
+  }
+  .prose-ee ul {
+    margin: 0.5rem 0 1.25rem;
+    padding-left: 1.1rem;
+    list-style: none;
+  }
+  .prose-ee li {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .prose-ee li::before {
+    content: "";
+    position: absolute;
+    left: -1.1rem;
+    top: 0.7em;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: var(--color-steel);
+  }
+  .prose-ee a {
+    color: var(--color-platinum);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-ee strong {
+    color: var(--color-silver);
+    font-weight: 500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .container-px {
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-px {
+      padding-inline: 2.5rem;
+    }
+  }
+}
