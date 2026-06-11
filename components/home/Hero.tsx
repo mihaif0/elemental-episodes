@@ -72,7 +72,7 @@ export function Hero() {
             </motion.div>
             <motion.p
               variants={item}
-              className="mt-8 text-[0.7rem] uppercase tracking-[0.28em] text-steel"
+              className="mt-8 hidden text-[0.7rem] uppercase tracking-[0.28em] text-steel md:block"
             >
               <span className="text-platinum">Brățară cadou 199 lei</span> la fiecare comandă
             </motion.p>
@@ -83,7 +83,7 @@ export function Hero() {
               initial={{ clipPath: "inset(0 0 100% 0)" }}
               animate={{ clipPath: "inset(0 0 0% 0)" }}
               transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
-              className="relative mx-auto aspect-[4/5] w-2/3 overflow-hidden border border-line sm:w-1/2 md:w-full"
+              className="relative mx-auto aspect-[4/5] w-4/5 overflow-hidden border border-line sm:w-3/5 md:w-full"
             >
               <Image
                 src="/lookbook/navy-pedestal.webp"
